@@ -48,17 +48,20 @@ plane { <0, 1, 0>, -10
 sky_sphere {
   S_Cloud2
 }    
-      
-#declare i=-10;
+#declare bounds=10;
 #declare s=0.25;
 #declare b=0.25;
-#while(i<=10)
+      
+#declare i=-bounds;
+#while(i<=bounds)
 
-  #declare j=-10;
-  #while(j<=10) 
-      #declare k=-10;
-        #while(k<=10) 
-            #if((i*i+j*j+k*k)<75)
+  #declare j=-bounds;
+  #while(j<bounds) 
+
+      #declare k=-bounds;
+        #while(k<=bounds) 
+
+            #if((i*i+j*j+k*k)<100 & mod( abs(i+bounds)+abs(j+bounds), 2 )=1 )
                 box{
                     <i,j,k>
                     <i+b,j+b,k+b>
